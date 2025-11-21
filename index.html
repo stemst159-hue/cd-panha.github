@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM ST 2025 - Image Carousel</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS to handle the fade transition and specific typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        /* Apply Inter as the base font, and Noto Serif for the main headings */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Dark background, full height */
+        .page-container {
+            min-height: 100vh;
+            background-color: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main Content Grid (desktop) / Flex (mobile) */
+        .content-grid {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column; /* Default stack on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+            }
+        }
+
+        /* Left Section: Big Headings */
+        .left-section h1 {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(4rem, 15vw, 10rem); /* Fluid font size */
+            line-height: 0.9;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Right Section: Image & Slider Logic */
+        .slider-container {
+            position: relative;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.0s ease-in-out; /* Smooth 1-second fade */
+            pointer-events: none; /* Allows interaction beneath hidden slides */
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlays (Text positioned on the image) */
+        .overlay-text-block {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .khmer-name {
+            font-size: 2.5rem; /* Large name text */
+            font-weight: bold;
+        }
+
+        .purple-text {
+            color: #9370DB; /* Custom purple color */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <!-- Navigation Bar -->
+        <header class="p-6 md:p-8 flex gap-8">
+            <a href="#" class="text-white hover:text-purple-400 text-lg font-medium transition duration-300">Home</a>
+            <a href="#" class="text-white hover:text-purple-400 text-lg font-medium transition duration-300">Contact</a>
+            <a href="#" class="text-white hover:text-purple-400 text-lg font-medium transition duration-300">About</a>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="content-grid">
+            
+            <!-- Left Section: Big Text -->
+            <div class="left-section flex flex-col justify-center px-8 md:px-16 lg:px-24 py-10 md:py-0">
+                <h1>STEM</h1>
+                <h1>ST</h1>
+                <h1 class="purple-text">2025</h1>
+            </div>
+
+            <!-- Right Section: Image Slider Container -->
+            <div class="slider-container">
+                
+                <!-- Slide 1: Woman (Slide2.jpg) -->
+                <div class="slide active" data-index="0">
+                    <img src="c:\Users\Dell\Downloads\Purple and White Professional Minimalist Digital Marketing Webinar Instagram Post (11).png" alt="STEM ST Staff 1">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| គ្រូ ដឹកនាំ</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">សារី លីដា</p>
+                        <p class="purple-text text-xl">| គ្រូ ដឹកនាំ</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង </p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Man (Slide1.jpg) -->
+                <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\Purple and White Professional Minimalist Digital Marketing Webinar Instagram Post (4).png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| ប្រធានក្រុម</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">អ៊ុន សុវណ្ណបរិញ្ញា</p>
+                        <p class="purple-text text-xl">| ប្រធានក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+                <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\Purple and White Professional Minimalist Digital Marketing Webinar Instagram Post (7).png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នកដំឡើងនិង​បញ្ចូលកូដ</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">រ៉ាន់​ សុខរាជ</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+ <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\Purple and White Professional Minimalist Digital Marketing Webinar Instagram Post (10).png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នកសរសេរសៀវភៅ</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">សំណាង វ៉ាន់នីហ្សា</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+        </div>
+        <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\1.png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នកដំឡើងនិង​បញ្ចូលកូដ</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">ឈួរ ​សៀងល៉ីម</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+                <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\3.png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នក develop website & ស្រឡាញ់គេម្នាក់ឯង</p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">ឌិត​ បញ្ញា</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+                <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\2.png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នករចនាវីឌីអូ </p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">សុ គន្ធលីតា</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+                <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\4.png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| អ្នករចនាវីឌីអូ </p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">ឆាយ​ ម៉េងហាក់</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+                 <div class="slide" data-index="1">
+                    <img src="c:\Users\Dell\Downloads\Purple and White Professional Minimalist Digital Marketing Webinar Instagram Post (15).png" alt="STEM ST Staff 2">
+                    
+                    <!-- Top Overlay -->
+                    <div class="overlay-text-block top-1/4 left-8 md:left-12 transform -translate-y-1/2">
+                        <p class="purple-text text-xl">| ហិរញ្ញិក </p>
+                    </div>
+                    
+                    <!-- Bottom Overlay -->
+                    <div class="overlay-text-block bottom-10 left-8 md:left-12 space-y-2">
+                        <p class="khmer-name">សារ៉េត​ សុធីតា</p>
+                        <p class="purple-text text-xl">| សមាជិកក្រុម</p>
+                        <p class="text-sm">មកពីខេត្តស្ទឹងត្រែង</p>
+                        <p class="text-sm">គម្រោង STEM សម្រាប់សិស្សឆ្នាំ២០២៥</p>
+                    </div>
+                </div>
+    </div>
+
+    <script>
+        // JavaScript for the automatic 3-second image swap
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentIndex = 0;
+            const intervalTime = 3000; // 3 seconds (3000 milliseconds)
+
+            function showNextSlide() {
+                // 1. Remove 'active' class from the current slide to start the fade-out
+                slides[currentIndex].classList.remove('active');
+
+                // 2. Calculate the next index, wrapping around to the start if needed
+                currentIndex = (currentIndex + 1) % slides.length;
+
+                // 3. Add 'active' class to the next slide to start the fade-in
+                slides[currentIndex].classList.add('active');
+            }
+
+            // Start the automatic rotation
+            setInterval(showNextSlide, intervalTime);
+        });
+    </script>
+</body>
+</html>
